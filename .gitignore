@@ -1,13 +1,4 @@
-# eclipse items
-.project
-.settings
-.classpath
-
-IntelliJ Items
-.idea/
-*.iml
-
-# build artifacts
+build artifacts
 .gradle/
 bin/
 build/
