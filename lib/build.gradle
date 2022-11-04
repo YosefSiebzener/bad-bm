@@ -55,12 +55,13 @@ jar {
 }
 
 task fatJar(type: Jar) {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     manifest {
-        attributes 'Main-Class': 'com.yourpackage.Main'
+        attributes 'Main-Class': 'edu.touro.mco152.bm.App'
     }
-    archiveClassifier = "all"
+    archiveBaseName = "badbm"
     from {
-        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+//        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
     with jar
