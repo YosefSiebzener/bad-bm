@@ -38,7 +38,7 @@ dependencies {
     implementation group: 'org.apache.derby', name: 'derbyshared', version: '10.15.2.0'
 }
 
-tasks.named('test') {
+test {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
 }
