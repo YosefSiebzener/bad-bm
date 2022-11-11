@@ -14,6 +14,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class DiskRunTest {
     DiskRun dr = new DiskRun();
 
+    /**
+     * Boundary test.
+     * <p>
+     *     Tested with null value.
+     * @param d
+     */
     @ParameterizedTest
     @NullSource
     public void getDurationTest(Date d) {
