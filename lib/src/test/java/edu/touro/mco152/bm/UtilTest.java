@@ -20,7 +20,11 @@ public class UtilTest {
      * <p>
      *      Tests boundaries where the same number is given twice,
      *      negative to positive, negative to negative, min is zero,
-     *      max is zero, and where the values are far apart.
+     *      max is zero, and where the values are as far apart as
+     *      allowed according to the javadoc.
+     * <p>
+     *      Method should throw IllegalArgumentException if min is
+     *      greater than max.
      */
     @Test
     public void randIntTest() {
@@ -32,7 +36,7 @@ public class UtilTest {
             randomChecker(-17, -4); // Negative to negative
             randomChecker(0, 3);    // Min is 0
             randomChecker(-3, 0);   // Max is 0
-            randomChecker(-1234, 1234); // Far apart (and negative to positive)
+            randomChecker(0, Integer.MAX_VALUE - 1); // As far apart as allowed
         }
         assertThrows(IllegalArgumentException.class, () -> Util.randInt(5,4));
     }

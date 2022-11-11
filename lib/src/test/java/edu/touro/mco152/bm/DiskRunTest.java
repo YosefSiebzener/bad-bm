@@ -18,7 +18,7 @@ public class DiskRunTest {
      * Boundary test.
      * <p>
      *     Tested with null value.
-     * @param d
+     * @param d date (which will be set to null.)
      */
     @ParameterizedTest
     @NullSource
@@ -41,7 +41,7 @@ public class DiskRunTest {
                     + amountOfSecsToAdd + ".");
             time.setTime(now);
             /*  I use setTime with the original time from when we start running the method rather than
-             *  Calendar.getInstance() because as the test runs, the seconds may change.
+             *  Calendar.getInstance() because as the test runs, the current seconds may change.
              */
         }
 

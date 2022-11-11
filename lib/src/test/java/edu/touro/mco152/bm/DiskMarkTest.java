@@ -15,7 +15,11 @@ public class DiskMarkTest {
      *      the amount of decimal spaces formatted for
      *      with positive and negative values as well as
      *      with whole numbers or just fractional parts.
-     * @param num
+     *
+     * <p>
+     *      Cross-checks against the build-in String
+     *      formatter.
+     * @param num number to be formatted
      */
     @ParameterizedTest
     @ValueSource(doubles = {-.34,-5.1,-5.123,-5.12345,.34,134.1,134.123,134.12345})
@@ -30,7 +34,7 @@ public class DiskMarkTest {
      *     Tested 0, small positive number, small negative number
      *     large positive number, large negative number, and maximum
      *     and minimum values.
-     * @param num
+     * @param num number to be formatted
      */
     @ParameterizedTest
     @ValueSource(ints = {0,1,-1,23455,-2345,Integer.MIN_VALUE,Integer.MAX_VALUE})
