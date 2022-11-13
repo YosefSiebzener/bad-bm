@@ -16,7 +16,7 @@ public class UtilTest {
     }
 
     /**
-     * Boundary conditions and Error.
+     * Boundary conditions (Range) and Error.
      * <p>
      *      Tests boundaries where the same number is given twice,
      *      negative to positive, negative to negative, min is zero,

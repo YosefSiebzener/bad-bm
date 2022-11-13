@@ -9,12 +9,14 @@ public class DiskMarkTest {
     DiskMark dm = new DiskMark(DiskMark.MarkType.READ);
 
     /**
-     * Boundary conditions and cross-checking.
+     * Boundary conditions (Range and conforming) and cross-checking.
      * <p>
      *      Tested less than, equal to, and greater than
      *      the amount of decimal spaces formatted for
      *      with positive and negative values as well as
-     *      with whole numbers or just fractional parts.
+     *      with whole numbers or just fractional parts
+     *      to test if they would get formatted as they
+     *      should.
      *
      * <p>
      *      Cross-checks against the build-in String
@@ -29,7 +31,7 @@ public class DiskMarkTest {
     }
 
     /**
-     * Boundary conditions.
+     * Boundary conditions (Range).
      * <p>
      *     Tested 0, small positive number, small negative number
      *     large positive number, large negative number, and maximum

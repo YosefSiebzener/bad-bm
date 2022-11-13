@@ -1,28 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.touro.mco152.bm.DiskRunTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-11-11T14:04:01" hostname="LAPTOP-QGUCRGG3" time="0.014">
+<testsuite name="edu.touro.mco152.bm.DiskRunTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2022-11-13T09:48:29" hostname="LAPTOP-QGUCRGG3" time="0.018">
   <properties/>
-  <testcase name="getDurationTest()" classname="edu.touro.mco152.bm.DiskRunTest" time="0.006"/>
-  <testcase name="[1] null" classname="edu.touro.mco152.bm.DiskRunTest" time="0.003"/>
-  <system-out><![CDATA[Wed Aug 20 00:03:37 EDT 2053
-Mon Nov 18 04:09:23 EST 2052
-Thu Aug 06 19:56:48 EDT 2037
-Fri Mar 17 08:10:20 EDT 2056
-Fri Jun 15 05:30:06 EDT 2085
-Thu Oct 11 14:55:11 EDT 2085
-Sun Feb 03 07:15:41 EST 2041
-Thu Jul 02 17:33:04 EDT 2037
-Sat Apr 14 06:09:29 EDT 2068
-Tue Nov 21 15:37:17 EST 2062
-Sat Jul 03 11:34:22 EDT 2032
-Thu Feb 25 16:58:56 EST 2055
-Fri Oct 27 11:15:06 EDT 2028
-Thu May 24 11:08:27 EDT 2063
-Sat Jul 13 13:08:21 EDT 2080
-Thu Apr 06 07:11:58 EDT 2028
-Thu Apr 12 17:14:10 EDT 2063
-Wed Mar 17 05:02:35 EDT 2066
-Thu Sep 02 08:40:07 EDT 2083
-Sat May 17 16:29:29 EDT 2070
+  <testcase name="[1] 1" classname="edu.touro.mco152.bm.DiskRunTest" time="0.001"/>
+  <testcase name="[2] 23" classname="edu.touro.mco152.bm.DiskRunTest" time="0.001"/>
+  <testcase name="[3] 60" classname="edu.touro.mco152.bm.DiskRunTest" time="0.003"/>
+  <testcase name="[4] 12345" classname="edu.touro.mco152.bm.DiskRunTest" time="0.001"/>
+  <testcase name="[5] 2147483647" classname="edu.touro.mco152.bm.DiskRunTest" time="0.003"/>
+  <testcase name="[1] null" classname="edu.touro.mco152.bm.DiskRunTest" time="0.001"/>
+  <system-out><![CDATA[Sun Nov 13 04:48:30 EST 2022
+Sun Nov 13 04:48:52 EST 2022
+Sun Nov 13 04:49:29 EST 2022
+Sun Nov 13 08:14:14 EST 2022
+Fri Dec 01 08:02:36 EST 2090
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

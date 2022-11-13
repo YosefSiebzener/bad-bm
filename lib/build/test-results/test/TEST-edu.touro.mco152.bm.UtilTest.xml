@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.touro.mco152.bm.UtilTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-11-11T14:04:01" hostname="LAPTOP-QGUCRGG3" time="0.017">
+<testsuite name="edu.touro.mco152.bm.UtilTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-11-13T09:48:29" hostname="LAPTOP-QGUCRGG3" time="0.01">
   <properties/>
-  <testcase name="randIntTest()" classname="edu.touro.mco152.bm.UtilTest" time="0.007"/>
-  <testcase name="deleteDirectoryTest()" classname="edu.touro.mco152.bm.UtilTest" time="0.009"/>
+  <testcase name="randIntTest()" classname="edu.touro.mco152.bm.UtilTest" time="0.006"/>
+  <testcase name="deleteDirectoryTest()" classname="edu.touro.mco152.bm.UtilTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

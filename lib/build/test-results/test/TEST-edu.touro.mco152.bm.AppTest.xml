@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.touro.mco152.bm.AppTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-11-11T14:03:58" hostname="LAPTOP-QGUCRGG3" time="2.767">
+<testsuite name="edu.touro.mco152.bm.AppTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-11-13T09:48:26" hostname="LAPTOP-QGUCRGG3" time="2.849">
   <properties/>
-  <testcase name="guiStartupTest()" classname="edu.touro.mco152.bm.AppTest" time="2.767"/>
+  <testcase name="guiStartupTest()" classname="edu.touro.mco152.bm.AppTest" time="2.849"/>
   <system-out><![CDATA[Config for Java Disk Mark 0.0
 readTest: false
 writeTest: true
@@ -16,38 +16,38 @@ numOfBlocks: 32
 blockSizeKb: 512
 
 loading stored run data
-[EL Fine]: server: 2022-11-11 09:03:59.645--Thread(Thread[Test worker,5,main])--Configured server platform: org.eclipse.persistence.platform.server.NoServerPlatform
-[EL Config]: metadata: 2022-11-11 09:03:59.939--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--The access type for the persistent class [class edu.touro.mco152.bm.persist.DiskRun] is set to [FIELD].
-[EL Config]: metadata: 2022-11-11 09:03:59.955--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--The alias name for the entity class [class edu.touro.mco152.bm.persist.DiskRun] is being defaulted to: DiskRun.
-[EL Config]: metadata: 2022-11-11 09:03:59.97--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--The column name for element [ioMode] is being defaulted to: IOMODE.
-[EL Config]: metadata: 2022-11-11 09:03:59.975--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--The column name for element [numMarks] is being defaulted to: NUMMARKS.
-[EL Config]: metadata: 2022-11-11 09:03:59.975--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--The column name for element [runMin] is being defaulted to: RUNMIN.
-[EL Config]: metadata: 2022-11-11 09:03:59.976--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--The column name for element [runAvg] is being defaulted to: RUNAVG.
-[EL Config]: metadata: 2022-11-11 09:03:59.976--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--The column name for element [diskInfo] is being defaulted to: DISKINFO.
-[EL Config]: metadata: 2022-11-11 09:03:59.976--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--The column name for element [totalMarks] is being defaulted to: TOTALMARKS.
-[EL Config]: metadata: 2022-11-11 09:03:59.976--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--The column name for element [blockOrder] is being defaulted to: BLOCKORDER.
-[EL Config]: metadata: 2022-11-11 09:03:59.977--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--The column name for element [blockSize] is being defaulted to: BLOCKSIZE.
-[EL Config]: metadata: 2022-11-11 09:03:59.977--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--The column name for element [txSize] is being defaulted to: TXSIZE.
-[EL Config]: metadata: 2022-11-11 09:03:59.977--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--The column name for element [numBlocks] is being defaulted to: NUMBLOCKS.
-[EL Config]: metadata: 2022-11-11 09:03:59.977--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--The column name for element [runMax] is being defaulted to: RUNMAX.
-[EL Config]: metadata: 2022-11-11 09:03:59.977--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--The column name for element [startTime] is being defaulted to: STARTTIME.
-[EL Config]: metadata: 2022-11-11 09:03:59.978--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--The column name for element [id] is being defaulted to: ID.
-[EL Config]: metadata: 2022-11-11 09:03:59.979--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--The column name for element [endTime] is being defaulted to: ENDTIME.
-[EL Info]: 2022-11-11 09:04:00.2--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--EclipseLink, version: Eclipse Persistence Services - 3.0.2.v202107160933
-[EL Fine]: connection: 2022-11-11 09:04:00.666--Thread(Thread[Test worker,5,main])--Detected database platform: org.eclipse.persistence.platform.database.JavaDBPlatform
-[EL Fine]: connection: 2022-11-11 09:04:00.673--ServerSession(2074492901)--Connection(2136291489)--Thread(Thread[Test worker,5,main])--connecting(DatabaseLogin(
+[EL Fine]: server: 2022-11-13 04:48:28.389--Thread(Thread[Test worker,5,main])--Configured server platform: org.eclipse.persistence.platform.server.NoServerPlatform
+[EL Config]: metadata: 2022-11-13 04:48:28.577--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--The access type for the persistent class [class edu.touro.mco152.bm.persist.DiskRun] is set to [FIELD].
+[EL Config]: metadata: 2022-11-13 04:48:28.592--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--The alias name for the entity class [class edu.touro.mco152.bm.persist.DiskRun] is being defaulted to: DiskRun.
+[EL Config]: metadata: 2022-11-13 04:48:28.608--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--The column name for element [ioMode] is being defaulted to: IOMODE.
+[EL Config]: metadata: 2022-11-13 04:48:28.624--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--The column name for element [numMarks] is being defaulted to: NUMMARKS.
+[EL Config]: metadata: 2022-11-13 04:48:28.624--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--The column name for element [runMin] is being defaulted to: RUNMIN.
+[EL Config]: metadata: 2022-11-13 04:48:28.624--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--The column name for element [runAvg] is being defaulted to: RUNAVG.
+[EL Config]: metadata: 2022-11-13 04:48:28.624--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--The column name for element [diskInfo] is being defaulted to: DISKINFO.
+[EL Config]: metadata: 2022-11-13 04:48:28.624--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--The column name for element [totalMarks] is being defaulted to: TOTALMARKS.
+[EL Config]: metadata: 2022-11-13 04:48:28.624--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--The column name for element [blockOrder] is being defaulted to: BLOCKORDER.
+[EL Config]: metadata: 2022-11-13 04:48:28.624--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--The column name for element [blockSize] is being defaulted to: BLOCKSIZE.
+[EL Config]: metadata: 2022-11-13 04:48:28.624--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--The column name for element [txSize] is being defaulted to: TXSIZE.
+[EL Config]: metadata: 2022-11-13 04:48:28.624--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--The column name for element [numBlocks] is being defaulted to: NUMBLOCKS.
+[EL Config]: metadata: 2022-11-13 04:48:28.624--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--The column name for element [runMax] is being defaulted to: RUNMAX.
+[EL Config]: metadata: 2022-11-13 04:48:28.624--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--The column name for element [startTime] is being defaulted to: STARTTIME.
+[EL Config]: metadata: 2022-11-13 04:48:28.624--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--The column name for element [id] is being defaulted to: ID.
+[EL Config]: metadata: 2022-11-13 04:48:28.624--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--The column name for element [endTime] is being defaulted to: ENDTIME.
+[EL Info]: 2022-11-13 04:48:28.783--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--EclipseLink, version: Eclipse Persistence Services - 3.0.2.v202107160933
+[EL Fine]: connection: 2022-11-13 04:48:29.361--Thread(Thread[Test worker,5,main])--Detected database platform: org.eclipse.persistence.platform.database.JavaDBPlatform
+[EL Fine]: connection: 2022-11-13 04:48:29.376--ServerSession(2074492901)--Connection(2136291489)--Thread(Thread[Test worker,5,main])--connecting(DatabaseLogin(
 	platform=>JavaDBPlatform
 	user name=> ""
 	datasource URL=> "jdbc:derby:derbyDB;create=true"
 ))
-[EL Config]: connection: 2022-11-11 09:04:00.675--ServerSession(2074492901)--Connection(1648278215)--Thread(Thread[Test worker,5,main])--Connected: jdbc:derby:derbyDB
+[EL Config]: connection: 2022-11-13 04:48:29.376--ServerSession(2074492901)--Connection(1648278215)--Thread(Thread[Test worker,5,main])--Connected: jdbc:derby:derbyDB
 	User: APP
 	Database: Apache Derby  Version: 10.15.2.0 - (1873585)
 	Driver: Apache Derby Embedded JDBC Driver  Version: 10.15.2.0 - (1873585)
-[EL Fine]: connection: 2022-11-11 09:04:00.771--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--/file:/C:/Users/Yosef/OneDrive - student.touro.edu/Desktop/MCON 152 Computer Methodology/BadBM/lib/build/classes/java/main/_jDiskMarkPU login successful
-[EL Fine]: sql: 2022-11-11 09:04:01.077--ServerSession(2074492901)--Connection(1648278215)--Thread(Thread[Test worker,5,main])--SELECT ID, BLOCKORDER, BLOCKSIZE, DISKINFO, ENDTIME, IOMODE, NUMBLOCKS, NUMMARKS, RUNAVG, RUNMAX, RUNMIN, STARTTIME, TOTALMARKS, TXSIZE FROM DiskRun
+[EL Fine]: connection: 2022-11-13 04:48:29.455--ServerSession(2074492901)--Thread(Thread[Test worker,5,main])--/file:/C:/Users/Yosef/OneDrive - student.touro.edu/Desktop/MCON 152 Computer Methodology/BadBM/lib/build/classes/java/main/_jDiskMarkPU login successful
+[EL Fine]: sql: 2022-11-13 04:48:29.783--ServerSession(2074492901)--Connection(1648278215)--Thread(Thread[Test worker,5,main])--SELECT ID, BLOCKORDER, BLOCKSIZE, DISKINFO, ENDTIME, IOMODE, NUMBLOCKS, NUMMARKS, RUNAVG, RUNMAX, RUNMIN, STARTTIME, TOTALMARKS, TXSIZE FROM DiskRun
 ]]></system-out>
-  <system-err><![CDATA[Nov 11, 2022 9:03:59 AM edu.touro.mco152.bm.App getVersion
+  <system-err><![CDATA[Nov 13, 2022 4:48:27 AM edu.touro.mco152.bm.App getVersion
 SEVERE: null
 java.io.FileNotFoundException: build.properties (The system cannot find the file specified)
 	at java.base/java.io.FileInputStream.open0(Native Method)
@@ -145,7 +145,7 @@ java.io.FileNotFoundException: build.properties (The system cannot find the file
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
 
-Nov 11, 2022 9:03:59 AM edu.touro.mco152.bm.App getVersion
+Nov 13, 2022 4:48:28 AM edu.touro.mco152.bm.App getVersion
 SEVERE: null
 java.io.FileNotFoundException: build.properties (The system cannot find the file specified)
 	at java.base/java.io.FileInputStream.open0(Native Method)
