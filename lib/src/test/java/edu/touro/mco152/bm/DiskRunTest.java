@@ -17,6 +17,8 @@ public class DiskRunTest {
      * Boundary conditions (existence).
      * <p>
      *     Tested with null value (which should produce a result).
+     * <p>
+     *     *Broken test*
      * @param d date (which will be set to null.)
      */
     @ParameterizedTest
