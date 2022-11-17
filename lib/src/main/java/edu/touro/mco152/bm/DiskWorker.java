@@ -6,13 +6,11 @@ import edu.touro.mco152.bm.ui.Gui;
 
 import jakarta.persistence.EntityManager;
 import javax.swing.*;
-import java.beans.PropertyChangeEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.Date;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -35,13 +33,13 @@ import static edu.touro.mco152.bm.DiskMark.MarkType.WRITE;
  */
 
 public class DiskWorker {
-    protected GuiInterface gi;
+    protected UiInterface gi;
 
-    public DiskWorker(GuiInterface gi) {
+    public DiskWorker(UiInterface gi) {
         this.gi = gi;
     }
 
-    protected Boolean startBm(GuiInterface gi) throws Exception {
+    protected Boolean startBm(UiInterface gi) throws Exception {
 
         /*
           We 'got here' because: a) End-user clicked 'Start' on the benchmark UI,

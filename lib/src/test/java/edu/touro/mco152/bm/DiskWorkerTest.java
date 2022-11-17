@@ -9,7 +9,7 @@ import java.util.Properties;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class DiskWorkerTest implements GuiInterface {
+public class DiskWorkerTest implements UiInterface {
     /**
      * Bruteforce setup of static classes/fields to allow DiskWorker to run.
      *

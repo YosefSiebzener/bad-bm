@@ -8,7 +8,7 @@ import java.util.List;
 
 import static edu.touro.mco152.bm.App.dataDir;
 
-public class GuiInterfaceSwingImplementation extends SwingWorker<Boolean, DiskMark> implements GuiInterface{
+public class UiInterfaceSwingImplementation extends SwingWorker<Boolean, DiskMark> implements UiInterface {
     DiskWorker dw;
     @Override
     public Boolean startup(DiskWorker dw) {
