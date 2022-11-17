@@ -40,10 +40,6 @@ public class DiskWorker {
     public DiskWorker(GuiInterface gi) {
         this.gi = gi;
     }
-    public void startup() {
-        gi.startup(this);
-    }
-
 
     protected Boolean startBm(GuiInterface gi) throws Exception {
 

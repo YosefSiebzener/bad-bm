@@ -247,11 +247,12 @@ public class App {
         Gui.mainFrame.adjustSensitivity();
 
         //4. set up disk worker thread and its event handlers
-        worker = new DiskWorker(new GuiInterfaceSwingImplementation());
-        worker.gi.dynamicPropertyAdjustment();
+        GuiInterface gi = new GuiInterfaceSwingImplementation();
+        worker = new DiskWorker(gi);
+        gi.dynamicPropertyAdjustment();
 
         //5. start the Swing worker thread
-        worker.startup();
+        gi.startup(worker);
     }
 
     /**

@@ -1,8 +1,7 @@
 package edu.touro.mco152.bm;
 
 public interface GuiInterface {
-    public void startup(DiskWorker dw);
-    public void runBm();
+    public Boolean startup(DiskWorker dw);
     public void dynamicPropertyAdjustment();
     public void stop();
     public boolean isStopped();

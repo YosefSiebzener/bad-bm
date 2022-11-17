@@ -11,19 +11,15 @@ import static edu.touro.mco152.bm.App.dataDir;
 public class GuiInterfaceSwingImplementation extends SwingWorker<Boolean, DiskMark> implements GuiInterface{
     DiskWorker dw;
     @Override
-    public void startup(DiskWorker dw) {
+    public Boolean startup(DiskWorker dw) {
         this.dw = dw;
         execute();
+        return null;
     }
 
     @Override
     protected Boolean doInBackground() throws Exception {
         return dw.startBm(this);
-    }
-
-    @Override
-    public void runBm() {
-        execute();
     }
 
     @Override
