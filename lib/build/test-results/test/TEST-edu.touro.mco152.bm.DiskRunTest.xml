@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="edu.touro.mco152.bm.DiskRunTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2022-11-13T09:48:29" hostname="LAPTOP-QGUCRGG3" time="0.018">
+  <properties/>
+  <testcase name="[1] 1" classname="edu.touro.mco152.bm.DiskRunTest" time="0.001"/>
+  <testcase name="[2] 23" classname="edu.touro.mco152.bm.DiskRunTest" time="0.001"/>
+  <testcase name="[3] 60" classname="edu.touro.mco152.bm.DiskRunTest" time="0.003"/>
+  <testcase name="[4] 12345" classname="edu.touro.mco152.bm.DiskRunTest" time="0.001"/>
+  <testcase name="[5] 2147483647" classname="edu.touro.mco152.bm.DiskRunTest" time="0.003"/>
+  <testcase name="[1] null" classname="edu.touro.mco152.bm.DiskRunTest" time="0.001"/>
+  <system-out><![CDATA[Sun Nov 13 04:48:30 EST 2022
+Sun Nov 13 04:48:52 EST 2022
+Sun Nov 13 04:49:29 EST 2022
+Sun Nov 13 08:14:14 EST 2022
+Fri Dec 01 08:02:36 EST 2090
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

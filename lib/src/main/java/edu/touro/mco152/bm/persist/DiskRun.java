@@ -126,9 +126,9 @@ public class DiskRun implements Serializable {
     }
 
     public String getDuration() {
-        if (getEndTime() == null) {
-            return "unknown";
-        }
+//        if (getEndTime() == null) {
+//            return "unknown";
+//        }
         long duration = getEndTime().getTime() - startTime.getTime();
         long diffSeconds = duration / 1000 % 60;
         return diffSeconds + "s";

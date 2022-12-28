@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="edu.touro.mco152.bm.DiskMarkTest" tests="15" skipped="0" failures="0" errors="0" timestamp="2022-11-13T09:48:29" hostname="LAPTOP-QGUCRGG3" time="0.083">
+  <properties/>
+  <testcase name="[1] -0.34" classname="edu.touro.mco152.bm.DiskMarkTest" time="0.034"/>
+  <testcase name="[2] -5.1" classname="edu.touro.mco152.bm.DiskMarkTest" time="0.002"/>
+  <testcase name="[3] -5.123" classname="edu.touro.mco152.bm.DiskMarkTest" time="0.002"/>
+  <testcase name="[4] -5.12345" classname="edu.touro.mco152.bm.DiskMarkTest" time="0.001"/>
+  <testcase name="[5] 0.34" classname="edu.touro.mco152.bm.DiskMarkTest" time="0.001"/>
+  <testcase name="[6] 134.1" classname="edu.touro.mco152.bm.DiskMarkTest" time="0.0"/>
+  <testcase name="[7] 134.123" classname="edu.touro.mco152.bm.DiskMarkTest" time="0.003"/>
+  <testcase name="[8] 134.12345" classname="edu.touro.mco152.bm.DiskMarkTest" time="0.001"/>
+  <testcase name="[1] 0" classname="edu.touro.mco152.bm.DiskMarkTest" time="0.001"/>
+  <testcase name="[2] 1" classname="edu.touro.mco152.bm.DiskMarkTest" time="0.001"/>
+  <testcase name="[3] -1" classname="edu.touro.mco152.bm.DiskMarkTest" time="0.001"/>
+  <testcase name="[4] 23455" classname="edu.touro.mco152.bm.DiskMarkTest" time="0.0"/>
+  <testcase name="[5] -2345" classname="edu.touro.mco152.bm.DiskMarkTest" time="0.001"/>
+  <testcase name="[6] -2147483648" classname="edu.touro.mco152.bm.DiskMarkTest" time="0.001"/>
+  <testcase name="[7] 2147483647" classname="edu.touro.mco152.bm.DiskMarkTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
