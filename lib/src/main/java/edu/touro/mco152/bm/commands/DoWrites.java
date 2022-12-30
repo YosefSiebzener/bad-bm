@@ -21,20 +21,33 @@ import static edu.touro.mco152.bm.App.msg;
 import static edu.touro.mco152.bm.DiskMark.MarkType.WRITE;
 
 public class DoWrites implements CommandInterface {
-    protected UiInterface gi;
+    protected UiInterface ui;
     private int numOfMarks;
     private int numOfBlocks;
     private int blockSizeKb;
     private DiskRun.BlockSequence blockSequence;
 
-    public DoWrites(UiInterface gi, int numOfMarks, int numOfBlocks, int blockSizeKb, DiskRun.BlockSequence blockSequence) {
-        this.gi = gi;
+    /**
+     * Constructor used to set up information about the benchmark
+     * @param ui UiInterface to output the data to
+     * @param numOfMarks Duration of test
+     * @param numOfBlocks Amount of blocks of data that should be written
+     * @param blockSizeKb Amount of kilobytes of data for each block
+     * @param blockSequence Order of IO operations (sequential or random)
+     */
+    public DoWrites(UiInterface ui, int numOfMarks, int numOfBlocks, int blockSizeKb, DiskRun.BlockSequence blockSequence) {
+        this.ui = ui;
         this.numOfMarks = numOfMarks;
         this.numOfBlocks = numOfBlocks;
         this.blockSizeKb = blockSizeKb;
         this.blockSequence = blockSequence;
     }
 
+    /**
+     * Used to benchmark a system's writing speed and output the data to
+     * the chosen UI.
+     */
+    @Override
     public void run() {
         int unitsComplete = 0;
         int unitsTotal =  numOfBlocks * numOfMarks;
@@ -75,7 +88,7 @@ public class DoWrites implements CommandInterface {
               that keeps writing data (in its own loop - for specified # of blocks). Each 'Mark' is timed
               and is reported to the GUI for display as each Mark completes.
              */
-        for (int m = startFileNum; m < startFileNum + numOfMarks && !gi.isStopped(); m++) {
+        for (int m = startFileNum; m < startFileNum + numOfMarks && !ui.isStopped(); m++) {
 
             if (App.multiFile) {
                 testFile = new File(dataDir.getAbsolutePath()
@@ -108,7 +121,7 @@ public class DoWrites implements CommandInterface {
                             /*
                               Report to GUI what percentage level of Entire BM (#Marks * #Blocks) is done.
                              */
-                        gi.setCompletionPercentage((int) percentComplete);
+                        ui.setCompletionPercentage((int) percentComplete);
                     }
                 }
             } catch (IOException ex) {
@@ -131,7 +144,7 @@ public class DoWrites implements CommandInterface {
                 /*
                   Let the GUI know the interim result described by the current Mark
                  */
-            gi.dynamicGuiUpdate(wMark);
+            ui.dynamicGuiUpdate(wMark);
 
             // Keep track of statistics to be displayed and persisted after all Marks are done.
             run.setRunMax(wMark.getCumMax());

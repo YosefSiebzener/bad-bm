@@ -21,20 +21,33 @@ import static edu.touro.mco152.bm.App.msg;
 import static edu.touro.mco152.bm.DiskMark.MarkType.READ;
 
 public class DoReads implements CommandInterface {
-    protected UiInterface gi;
+    protected UiInterface ui;
     private int numOfMarks;
     private int numOfBlocks;
     private int blockSizeKb;
     private DiskRun.BlockSequence blockSequence;
 
-    public DoReads(UiInterface gi, int numOfMarks, int numOfBlocks, int blockSizeKb, DiskRun.BlockSequence blockSequence) {
-        this.gi = gi;
+    /**
+     * Constructor used to set up information about the benchmark
+     * @param ui UiInterface to output the data to
+     * @param numOfMarks Duration of test
+     * @param numOfBlocks Amount of blocks of data that should be written
+     * @param blockSizeKb Amount of kilobytes of data for each block
+     * @param blockSequence Order of IO operations (sequential or random)
+     */
+    public DoReads(UiInterface ui, int numOfMarks, int numOfBlocks, int blockSizeKb, DiskRun.BlockSequence blockSequence) {
+        this.ui = ui;
         this.numOfMarks = numOfMarks;
         this.numOfBlocks = numOfBlocks;
         this.blockSizeKb = blockSizeKb;
         this.blockSequence = blockSequence;
     }
 
+    /**
+     * Used to benchmark a system's reading speed and output the data to
+     * the chosen UI.
+     */
+    @Override
     public void run() {
         int unitsComplete = 0;
         int unitsTotal = numOfBlocks * numOfMarks;
@@ -62,7 +75,7 @@ public class DoReads implements CommandInterface {
         Gui.chartPanel.getChart().getTitle().setVisible(true);
         Gui.chartPanel.getChart().getTitle().setText(run.getDiskInfo());
 
-        for (int m = startFileNum; m < startFileNum + numOfMarks && !gi.isStopped(); m++) {
+        for (int m = startFileNum; m < startFileNum + numOfMarks && !ui.isStopped(); m++) {
 
             if (App.multiFile) {
                 testFile = new File(dataDir.getAbsolutePath()
@@ -86,7 +99,7 @@ public class DoReads implements CommandInterface {
                         totalBytesReadInMark += blockSize;
                         unitsComplete++;
                         percentComplete = (float) unitsComplete / (float) unitsTotal * 100f;
-                        gi.setCompletionPercentage((int) percentComplete);
+                        ui.setCompletionPercentage((int) percentComplete);
                     }
                 }
             } catch (IOException ex) {
@@ -100,7 +113,7 @@ public class DoReads implements CommandInterface {
             msg("m:" + m + " READ IO is " + rMark.getBwMbSec() + " MB/s    "
                     + "(MBread " + mbRead + " in " + sec + " sec)");
             App.updateMetrics(rMark);
-            gi.dynamicGuiUpdate(rMark);
+            ui.dynamicGuiUpdate(rMark);
 
             run.setRunMax(rMark.getCumMax());
             run.setRunMin(rMark.getCumMin());
