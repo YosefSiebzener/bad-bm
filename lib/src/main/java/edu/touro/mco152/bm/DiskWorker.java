@@ -1,24 +1,13 @@
 package edu.touro.mco152.bm;
 
-import edu.touro.mco152.bm.commands.ReadTest;
-import edu.touro.mco152.bm.commands.WriteTest;
-import edu.touro.mco152.bm.persist.DiskRun;
-import edu.touro.mco152.bm.persist.EM;
+import edu.touro.mco152.bm.commands.DoReads;
+import edu.touro.mco152.bm.commands.DoWrites;
+import edu.touro.mco152.bm.commands.Executor;
 import edu.touro.mco152.bm.ui.Gui;
 
-import jakarta.persistence.EntityManager;
 import javax.swing.*;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.RandomAccessFile;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import static edu.touro.mco152.bm.App.*;
-import static edu.touro.mco152.bm.DiskMark.MarkType.READ;
-import static edu.touro.mco152.bm.DiskMark.MarkType.WRITE;
 
 /**
  * Run the disk benchmarking as a Swing-compliant thread (only one of these threads can run at
@@ -66,7 +55,7 @@ public class DiskWorker {
           The GUI allows either a write, read, or both types of BMs to be started. They are done serially.
          */
         if (App.writeTest) {
-            WriteTest.run(gi);
+            Executor.execute(new DoWrites(gi, numOfMarks, numOfBlocks, blockSizeKb, blockSequence));
         }
 
         /*
@@ -88,7 +77,7 @@ public class DiskWorker {
 
         // Same as above, just for Read operations instead of Writes.
         if (App.readTest) {
-            ReadTest.run(gi);
+            Executor.execute(new DoReads(gi, numOfMarks, numOfBlocks, blockSizeKb, blockSequence));
         }
         App.nextMarkNumber += App.numOfMarks;
         return true;
