@@ -20,15 +20,24 @@ import static edu.touro.mco152.bm.App.*;
 import static edu.touro.mco152.bm.App.msg;
 import static edu.touro.mco152.bm.DiskMark.MarkType.WRITE;
 
-public class WriteTest {
-    protected static UiInterface gi;
+public class DoWrites implements CommandInterface {
+    protected UiInterface gi;
+    private int numOfMarks;
+    private int numOfBlocks;
+    private int blockSizeKb;
+    private DiskRun.BlockSequence blockSequence;
 
-    public static void run(UiInterface gi) {
-        WriteTest.gi = gi;
-        int wUnitsComplete = 0, rUnitsComplete = 0, unitsComplete;
-        int wUnitsTotal = App.writeTest ? numOfBlocks * numOfMarks : 0;
-        int rUnitsTotal = App.readTest ? numOfBlocks * numOfMarks : 0;
-        int unitsTotal = wUnitsTotal + rUnitsTotal;
+    public DoWrites(UiInterface gi, int numOfMarks, int numOfBlocks, int blockSizeKb, DiskRun.BlockSequence blockSequence) {
+        this.gi = gi;
+        this.numOfMarks = numOfMarks;
+        this.numOfBlocks = numOfBlocks;
+        this.blockSizeKb = blockSizeKb;
+        this.blockSequence = blockSequence;
+    }
+
+    public void run() {
+        int unitsComplete = 0;
+        int unitsTotal =  numOfBlocks * numOfMarks;
         float percentComplete;
 
         int blockSize = blockSizeKb * KILOBYTE;
@@ -43,10 +52,10 @@ public class WriteTest {
         int startFileNum = App.nextMarkNumber;
 
 
-        DiskRun run = new DiskRun(DiskRun.IOMode.WRITE, App.blockSequence);
-        run.setNumMarks(App.numOfMarks);
-        run.setNumBlocks(App.numOfBlocks);
-        run.setBlockSize(App.blockSizeKb);
+        DiskRun run = new DiskRun(DiskRun.IOMode.WRITE, blockSequence);
+        run.setNumMarks(numOfMarks);
+        run.setNumBlocks(numOfBlocks);
+        run.setBlockSize(blockSizeKb);
         run.setTxSize(App.targetTxSizeKb());
         run.setDiskInfo(Util.getDiskInfo(dataDir));
 
@@ -66,7 +75,7 @@ public class WriteTest {
               that keeps writing data (in its own loop - for specified # of blocks). Each 'Mark' is timed
               and is reported to the GUI for display as each Mark completes.
              */
-        for (int m = startFileNum; m < startFileNum + App.numOfMarks && !gi.isStopped(); m++) {
+        for (int m = startFileNum; m < startFileNum + numOfMarks && !gi.isStopped(); m++) {
 
             if (App.multiFile) {
                 testFile = new File(dataDir.getAbsolutePath()
@@ -85,7 +94,7 @@ public class WriteTest {
             try {
                 try (RandomAccessFile rAccFile = new RandomAccessFile(testFile, mode)) {
                     for (int b = 0; b < numOfBlocks; b++) {
-                        if (App.blockSequence == DiskRun.BlockSequence.RANDOM) {
+                        if (blockSequence == DiskRun.BlockSequence.RANDOM) {
                             int rLoc = Util.randInt(0, numOfBlocks - 1);
                             rAccFile.seek((long) rLoc * blockSize);
                         } else {
@@ -93,8 +102,7 @@ public class WriteTest {
                         }
                         rAccFile.write(blockArr, 0, blockSize);
                         totalBytesWrittenInMark += blockSize;
-                        wUnitsComplete++;
-                        unitsComplete = rUnitsComplete + wUnitsComplete;
+                        unitsComplete++;
                         percentComplete = (float) unitsComplete / (float) unitsTotal * 100f;
 
                             /*

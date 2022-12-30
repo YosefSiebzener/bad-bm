@@ -10,7 +10,6 @@ import edu.touro.mco152.bm.ui.Gui;
 import jakarta.persistence.EntityManager;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.Date;
@@ -21,15 +20,24 @@ import static edu.touro.mco152.bm.App.*;
 import static edu.touro.mco152.bm.App.msg;
 import static edu.touro.mco152.bm.DiskMark.MarkType.READ;
 
-public class ReadTest {
-    protected static UiInterface gi;
+public class DoReads implements CommandInterface {
+    protected UiInterface gi;
+    private int numOfMarks;
+    private int numOfBlocks;
+    private int blockSizeKb;
+    private DiskRun.BlockSequence blockSequence;
 
-    public static void run(UiInterface gi) {
-        ReadTest.gi = gi;
-        int wUnitsComplete = 0, rUnitsComplete = 0, unitsComplete;
-        int wUnitsTotal = App.writeTest ? numOfBlocks * numOfMarks : 0;
-        int rUnitsTotal = App.readTest ? numOfBlocks * numOfMarks : 0;
-        int unitsTotal = wUnitsTotal + rUnitsTotal;
+    public DoReads(UiInterface gi, int numOfMarks, int numOfBlocks, int blockSizeKb, DiskRun.BlockSequence blockSequence) {
+        this.gi = gi;
+        this.numOfMarks = numOfMarks;
+        this.numOfBlocks = numOfBlocks;
+        this.blockSizeKb = blockSizeKb;
+        this.blockSequence = blockSequence;
+    }
+
+    public void run() {
+        int unitsComplete = 0;
+        int unitsTotal = numOfBlocks * numOfMarks;
         float percentComplete;
 
         int blockSize = blockSizeKb * KILOBYTE;
@@ -42,10 +50,10 @@ public class ReadTest {
 
         DiskMark rMark;
         int startFileNum = App.nextMarkNumber;
-        DiskRun run = new DiskRun(DiskRun.IOMode.READ, App.blockSequence);
-        run.setNumMarks(App.numOfMarks);
-        run.setNumBlocks(App.numOfBlocks);
-        run.setBlockSize(App.blockSizeKb);
+        DiskRun run = new DiskRun(DiskRun.IOMode.READ, blockSequence);
+        run.setNumMarks(numOfMarks);
+        run.setNumBlocks(numOfBlocks);
+        run.setBlockSize(blockSizeKb);
         run.setTxSize(App.targetTxSizeKb());
         run.setDiskInfo(Util.getDiskInfo(dataDir));
 
@@ -54,7 +62,7 @@ public class ReadTest {
         Gui.chartPanel.getChart().getTitle().setVisible(true);
         Gui.chartPanel.getChart().getTitle().setText(run.getDiskInfo());
 
-        for (int m = startFileNum; m < startFileNum + App.numOfMarks && !gi.isStopped(); m++) {
+        for (int m = startFileNum; m < startFileNum + numOfMarks && !gi.isStopped(); m++) {
 
             if (App.multiFile) {
                 testFile = new File(dataDir.getAbsolutePath()
@@ -68,7 +76,7 @@ public class ReadTest {
             try {
                 try (RandomAccessFile rAccFile = new RandomAccessFile(testFile, "r")) {
                     for (int b = 0; b < numOfBlocks; b++) {
-                        if (App.blockSequence == DiskRun.BlockSequence.RANDOM) {
+                        if (blockSequence == DiskRun.BlockSequence.RANDOM) {
                             int rLoc = Util.randInt(0, numOfBlocks - 1);
                             rAccFile.seek((long) rLoc * blockSize);
                         } else {
@@ -76,8 +84,7 @@ public class ReadTest {
                         }
                         rAccFile.readFully(blockArr, 0, blockSize);
                         totalBytesReadInMark += blockSize;
-                        rUnitsComplete++;
-                        unitsComplete = rUnitsComplete + wUnitsComplete;
+                        unitsComplete++;
                         percentComplete = (float) unitsComplete / (float) unitsTotal * 100f;
                         gi.setCompletionPercentage((int) percentComplete);
                     }
