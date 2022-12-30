@@ -54,9 +54,8 @@ public class DiskWorkerTest implements UiInterface {
     @Override
     public Boolean startup(DiskWorker dw) {
         setupDefaultAsPerProperties();
-        DiskWorker diskWorker = new DiskWorker(this);
         try {
-            assertTrue(diskWorker.startBm(this));
+            assertTrue(dw.startBm(this));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
