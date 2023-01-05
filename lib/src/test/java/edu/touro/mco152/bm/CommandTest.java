@@ -1,5 +1,10 @@
 package edu.touro.mco152.bm;
 
+import edu.touro.mco152.bm.commands.CommandInterface;
+import edu.touro.mco152.bm.commands.DoReads;
+import edu.touro.mco152.bm.commands.DoWrites;
+import edu.touro.mco152.bm.commands.Executor;
+import edu.touro.mco152.bm.persist.DiskRun;
 import edu.touro.mco152.bm.ui.Gui;
 import edu.touro.mco152.bm.ui.MainFrame;
 import org.junit.jupiter.api.Test;
@@ -7,9 +12,42 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.util.Properties;
 
-import static org.junit.jupiter.api.Assertions.*;
+/**
+ * Class for testing read and write commands.
+ */
+public class CommandTest {
 
-public class DiskWorkerTest implements UiInterface {
+    private final int NUM_OF_MARKS = 25;
+    private final int NUM_OF_BLOCKS = 128;
+    private final int BLOCK_SIZE_KB = 2048;
+    private final DiskRun.BlockSequence BLOCK_SEQUENCE = DiskRun.BlockSequence.SEQUENTIAL;
+
+    /**
+     * Uses executor to execute write command
+     */
+    @Test
+    void writeTest() {
+        commandTest(new DoWrites(new DiskWorkerTest(), NUM_OF_MARKS, NUM_OF_BLOCKS, BLOCK_SIZE_KB, BLOCK_SEQUENCE));
+    }
+
+    /**
+     * Uses executor to execute read command
+     */
+    @Test
+    void readTest() {
+        commandTest(new DoReads(new DiskWorkerTest(), NUM_OF_MARKS, NUM_OF_BLOCKS, BLOCK_SIZE_KB, BLOCK_SEQUENCE));
+    }
+
+    /**
+     * Generic method for executing command with a bit of setup
+     *
+     * @param command The command to execute
+     */
+    private void commandTest(CommandInterface command) {
+        setupDefaultAsPerProperties();
+        Executor.execute(command);
+    }
+
     /**
      * Bruteforce setup of static classes/fields to allow DiskWorker to run.
      *
@@ -43,48 +81,6 @@ public class DiskWorkerTest implements UiInterface {
         {
             App.dataDir.mkdirs(); // create data dir if not already present
         }
-
-    }
-
-    @Test
-    public void test() {
-        startup(new DiskWorker(this));
-    }
-
-    @Override
-    public Boolean startup(DiskWorker dw) {
-        setupDefaultAsPerProperties();
-        try {
-            assertTrue(dw.startBm(this));
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        return null;
-    }
-
-    @Override
-    public void dynamicPropertyAdjustment() {
-
-    }
-
-    @Override
-    public void stop() {
-
-    }
-
-    @Override
-    public boolean isStopped() {
-        return false;
-    }
-
-    @Override
-    public void setCompletionPercentage(int perc) {
-        assertTrue(perc >= 0);
-        assertTrue(perc <= 100);
-    }
-
-    @Override
-    public void dynamicGuiUpdate(DiskMark... o) {
 
     }
 }

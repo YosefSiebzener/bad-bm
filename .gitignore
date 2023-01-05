@@ -2,6 +2,7 @@ build artifacts
 .gradle/
 bin/
 out/
+build/
 
 # program execution artifacts
 jDiskMarkData/
