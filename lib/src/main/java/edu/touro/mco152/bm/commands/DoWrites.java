@@ -4,15 +4,16 @@ import edu.touro.mco152.bm.App;
 import edu.touro.mco152.bm.DiskMark;
 import edu.touro.mco152.bm.UiInterface;
 import edu.touro.mco152.bm.Util;
+import edu.touro.mco152.bm.observer.ObservableInterface;
+import edu.touro.mco152.bm.observer.ObserverInterface;
 import edu.touro.mco152.bm.persist.DiskRun;
-import edu.touro.mco152.bm.persist.EM;
 import edu.touro.mco152.bm.ui.Gui;
-import jakarta.persistence.EntityManager;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,7 +21,8 @@ import static edu.touro.mco152.bm.App.*;
 import static edu.touro.mco152.bm.App.msg;
 import static edu.touro.mco152.bm.DiskMark.MarkType.WRITE;
 
-public class DoWrites implements CommandInterface {
+public class DoWrites implements CommandInterface, ObservableInterface {
+    HashSet<ObserverInterface> observers = new HashSet<>();
     protected UiInterface ui;
     private int numOfMarks;
     private int numOfBlocks;
@@ -156,11 +158,24 @@ public class DoWrites implements CommandInterface {
             /*
               Persist info about the Write BM Run (e.g. into Derby Database) and add it to a GUI panel
              */
-        EntityManager em = EM.getEntityManager();
-        em.getTransaction().begin();
-        em.persist(run);
-        em.getTransaction().commit();
+        notifyObservers(run);
+    }
 
-        Gui.runPanel.addRun(run);
+
+    @Override
+    public void registerObserver(ObserverInterface oi) {
+        observers.add(oi);
+    }
+
+    @Override
+    public void unregisterObserver(ObserverInterface oi) {
+        observers.remove(oi);
+    }
+
+    @Override
+    public void notifyObservers(DiskRun run) {
+        for (ObserverInterface observer : observers) {
+            observer.update(run);
+        }
     }
 }
