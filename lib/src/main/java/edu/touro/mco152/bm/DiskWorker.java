@@ -1,8 +1,12 @@
 package edu.touro.mco152.bm;
 
+import edu.touro.mco152.bm.commands.CommandInterface;
 import edu.touro.mco152.bm.commands.DoReads;
 import edu.touro.mco152.bm.commands.DoWrites;
 import edu.touro.mco152.bm.commands.Executor;
+import edu.touro.mco152.bm.messagers.SlackMessagerObserver;
+import edu.touro.mco152.bm.observer.ObservableInterface;
+import edu.touro.mco152.bm.persist.PersistenceObserver;
 import edu.touro.mco152.bm.ui.Gui;
 
 import javax.swing.*;
@@ -24,6 +28,9 @@ import static edu.touro.mco152.bm.App.*;
  */
 
 public class DiskWorker {
+    PersistenceObserver pi = new PersistenceObserver();
+    Gui gui = new Gui();
+    SlackMessagerObserver slackMessagerObserver = new SlackMessagerObserver();
     protected UiInterface gi;
 
     public DiskWorker(UiInterface gi) {
@@ -55,7 +62,9 @@ public class DiskWorker {
           The GUI allows either a write, read, or both types of BMs to be started. They are done serially.
          */
         if (App.writeTest) {
-            Executor.execute(new DoWrites(gi, numOfMarks, numOfBlocks, blockSizeKb, blockSequence));
+            ObservableInterface doWrites = new DoWrites(gi, numOfMarks, numOfBlocks, blockSizeKb, blockSequence);
+            registerObservers(doWrites);
+            Executor.execute((CommandInterface) doWrites);
         }
 
         /*
@@ -77,9 +86,18 @@ public class DiskWorker {
 
         // Same as above, just for Read operations instead of Writes.
         if (App.readTest) {
-            Executor.execute(new DoReads(gi, numOfMarks, numOfBlocks, blockSizeKb, blockSequence));
+            ObservableInterface doReads = new DoReads(gi, numOfMarks, numOfBlocks, blockSizeKb, blockSequence);
+            registerObservers(doReads);
+            Executor.execute((CommandInterface) doReads);
         }
         App.nextMarkNumber += App.numOfMarks;
         return true;
+    }
+
+    private void registerObservers(ObservableInterface oi) {
+
+        pi.addSelfToObservable(oi);
+        gui.addSelfToObservable(oi);
+        slackMessagerObserver.addSelfToObservable(oi);
     }
 }
